@@ -4,20 +4,41 @@ struct Node{
     int data;
     struct Node *next;
 };
-void Traverse(struct Node *ptr){
-    while(ptr!=NULL){
-        printf("%d ",ptr->data);
-        ptr=ptr->next;
+void Traverse(struct Node *head){
+    struct Node *p=head;
+    do{
+        printf("%d ",p->data);
+        p=p->next;
     }
+    while(p!=head);
+        
 }
-//case 1:
+//In these two cases few minutes changes has been made
 struct Node *InsertAtFirst(struct Node *head,int element){
     struct Node *newhead=(struct Node*)malloc(sizeof(struct Node));
-    newhead->data=1000;
+    struct Node *p=head;
+    newhead->data=element;
     newhead->next=head;
+    while(p->next!=head){
+        p=p->next;
+    }
+    p->next=newhead;
+    
     return newhead;
 }
-//case 2:
+struct Node *InsertAtEnd(struct Node *head,int element){
+        
+        struct Node *end=(struct Node*)malloc(sizeof(struct Node));
+        struct Node *p=head;
+        while(p->next!=head){
+            p=p->next;
+        }
+        p->next=end;
+        end->next=head;
+        end->data=element;
+        return head;
+}
+//Here insertion is similar to SLL
 struct Node *InsertAtIndex(struct Node *head,int index,int element){
     struct Node *ind=(struct Node*)malloc(sizeof(struct Node));
      struct Node *p=head;
@@ -31,20 +52,6 @@ struct Node *InsertAtIndex(struct Node *head,int index,int element){
     ind->data=element;
     return head;
 }
-//case 3:
-struct Node *InsertAtEnd(struct Node *head,int element){
-        
-        struct Node *end=(struct Node*)malloc(sizeof(struct Node));
-        struct Node *p=head;
-        while(p->next!=NULL){
-            p=p->next;
-        }
-        p->next=end;
-        end->next=NULL;
-        end->data=element;
-        return head;
-}
-//case 4:
 void *InsertAfterNode(struct Node *prevNode,int element){
     struct Node *ptr=(struct Node*)malloc(sizeof(struct Node));
     ptr->data=element;
@@ -62,21 +69,19 @@ int main(){
     head->data=10;
     head->next=second;
 
-    second->data=30;
+    second->data=40;
     second->next=third;
 
-    third->data=60;
+    third->data=100;
     third->next=fourth;
 
-    fourth->data=400;
-    fourth->next=NULL;
+    fourth->data=60;
+    fourth->next=head;
 
-    //Traverse(head);
-   //head=InsertAtFirst(head,1000);
-   //head=InsertAtIndex(head,2,8000);
-  // head=InsertAtEnd(head,4000);
-  // InsertAfterNode(third,60);
+   // head = InsertAtFirst(head,1000);
+    //head=InsertAtIndex(head,2,345);
+   // head=InsertAtEnd(head,49);
+    InsertAfterNode(second,5);
     Traverse(head);
-    
     return 0;
 }
