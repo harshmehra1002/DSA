@@ -20,9 +20,9 @@ struct Node *InsertAtFirst(struct Node *head,int element){
 //case 2:
 struct Node *InsertAtIndex(struct Node *head,int index,int element){
     struct Node *ind=(struct Node*)malloc(sizeof(struct Node));
-     struct Node *p=head;
-     int i=0;
-    while(i!=(index-1)){ 
+    struct Node *p=head;
+    int i=0;
+    while(i!=(index-1)){
          p=p->next;
         i++;
     }
@@ -33,7 +33,6 @@ struct Node *InsertAtIndex(struct Node *head,int index,int element){
 }
 //case 3:
 struct Node *InsertAtEnd(struct Node *head,int element){
-        
         struct Node *end=(struct Node*)malloc(sizeof(struct Node));
         struct Node *p=head;
         while(p->next!=NULL){
@@ -73,9 +72,9 @@ int main(){
 
     //Traverse(head);
    //head=InsertAtFirst(head,1000);
-   //head=InsertAtIndex(head,2,8000);
-  // head=InsertAtEnd(head,4000);
-  // InsertAfterNode(third,60);
+  // head=InsertAtIndex(head,2,8000);
+   //head=InsertAtEnd(head,4000);
+   InsertAfterNode(third,60);
     Traverse(head);
     
     return 0;
